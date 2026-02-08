@@ -1,0 +1,251 @@
+body {
+    background-color: #f8f9fa;
+}
+
+/* Columnas del Kanban */
+.kanban-column {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    min-height: 500px;
+    padding: 15px;
+}
+
+.kanban-header {
+    font-weight: bold;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kanban-urgente { 
+    background-color: #dc3545; 
+}
+
+.kanban-normal { 
+    background-color: #ffc107; 
+    color: #333; 
+}
+
+.kanban-baja { 
+    background-color: #17a2b8; 
+}
+
+.kanban-completada { 
+    background-color: #28a745; 
+}
+
+/* Tarjetas de tareas */
+.task-card {
+    background: white;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: move;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.task-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.kanban-urgente + .task-card {
+    border-left-color: #dc3545;
+}
+
+.kanban-normal + .task-card {
+    border-left-color: #ffc107;
+}
+
+.kanban-baja + .task-card {
+    border-left-color: #17a2b8;
+}
+
+.kanban-completada + .task-card {
+    border-left-color: #28a745;
+}
+
+.task-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #212529;
+}
+
+.task-description {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.task-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.task-actions button {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+}
+
+/* Botón agregar tarea */
+.add-task-btn {
+    width: 100%;
+    border: 2px dashed #6c757d;
+    background: transparent;
+    color: #6c757d;
+    padding: 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.add-task-btn:hover {
+    border-color: #495057;
+    color: #495057;
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-card {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .kanban-column {
+        margin-bottom: 20px;
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .task-actions button {
+        padding: 3px 6px;
+    }
+    
+    .task-title {
+        font-size: 0.9rem;
+    }
+    
+    .task-description {
+        font-size: 0.8rem;
+    }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-container {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+.modal-small {
+    max-width: 400px;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header-custom {
+    padding: 15px 20px;
+    background: #007bff;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header-custom h5 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body-custom {
+    padding: 20px;
+}
+
+.modal-footer-custom {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
